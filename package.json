@@ -2,7 +2,7 @@
   "name": "schemver",
   "version": "0.1.0",
   "description": "Diffs two JSON Schemas and classifies every change as breaking, risky, or additive — a compatibility-aware semver verdict with per-path reasons.",
-  "author": "JaydenCJ",
+  "author": "JaydenCJ <aisingioro.kiyon@gmail.com>",
   "license": "MIT",
   "type": "module",
   "bin": {
