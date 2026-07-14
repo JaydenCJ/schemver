@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.test/schemas/user-created/v2.1.json",
+  "title": "user.created event",
+  "description": "Emitted once when a user account is created. Adds locale support.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "email", "plan", "signup_source"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "email": {
+      "type": "string",
+      "format": "idn-email",
+      "maxLength": 254
+    },
+    "plan": {
+      "type": "string",
+      "enum": ["pro", "team", "enterprise", "education"],
+      "default": "pro"
+    },
+    "age": {
+      "type": "integer",
+      "minimum": 13
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "maxItems": 50
+    },
+    "signup_source": {
+      "type": "string",
+      "enum": ["web", "mobile", "import"]
+    },
+    "nickname": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "locale": {
+      "type": "string",
+      "pattern": "^[a-z]{2}(-[A-Z]{2})?$"
+    }
+  }
+}

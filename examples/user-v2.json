@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.test/schemas/user-created/v2.json",
+  "title": "user.created event",
+  "description": "Emitted once when a user account is created.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "email", "plan", "signup_source"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "email": {
+      "type": "string",
+      "format": "idn-email",
+      "maxLength": 254
+    },
+    "plan": {
+      "type": "string",
+      "enum": ["pro", "team", "enterprise"],
+      "default": "pro"
+    },
+    "age": {
+      "type": "integer",
+      "minimum": 13
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "maxItems": 20
+    },
+    "signup_source": {
+      "type": "string",
+      "enum": ["web", "mobile", "import"]
+    },
+    "nickname": {
+      "type": "string",
+      "maxLength": 40
+    }
+  }
+}

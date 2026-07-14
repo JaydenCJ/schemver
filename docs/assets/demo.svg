@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="524" viewBox="0 0 800 524" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">
+  <rect width="800" height="524" rx="10" fill="#0d1117"/>
+  <rect width="800" height="34" rx="10" fill="#161b22"/>
+  <circle cx="20" cy="17" r="6" fill="#ff5f57"/>
+  <circle cx="40" cy="17" r="6" fill="#febc2e"/>
+  <circle cx="60" cy="17" r="6" fill="#28c840"/>
+  <text x="400" y="21" fill="#8b949e" text-anchor="middle">schemver — does this schema change need a major bump?</text>
+
+  <text x="24" y="64" fill="#7ee787">$ schemver diff user-v1.json user-v2.json</text>
+
+  <text x="24" y="94" fill="#c9d1d9" xml:space="preserve">BREAKING (5)</text>
+  <text x="24" y="114" fill="#c9d1d9" xml:space="preserve">  <tspan fill="#f85149">! /age</tspan>            bound-tightened                 lower bound &gt;= 0 → &gt;= 13</text>
+  <text x="24" y="134" fill="#c9d1d9" xml:space="preserve">  <tspan fill="#f85149">! /email</tspan>          bound-tightened                 maxLength 320 → 254</text>
+  <text x="24" y="154" fill="#c9d1d9" xml:space="preserve">  <tspan fill="#f85149">! /plan</tspan>           enum-values-removed             enum value "free" removed</text>
+  <text x="24" y="174" fill="#c9d1d9" xml:space="preserve">  <tspan fill="#f85149">! /referrer</tspan>       property-removed-now-forbidden  removed on a closed object</text>
+  <text x="24" y="194" fill="#c9d1d9" xml:space="preserve">  <tspan fill="#f85149">! /signup_source</tspan>  required-added                  now required — old data fails</text>
+
+  <text x="24" y="224" fill="#c9d1d9" xml:space="preserve">RISKY (2)</text>
+  <text x="24" y="244" fill="#c9d1d9" xml:space="preserve">  <tspan fill="#d29922">? /email</tspan>          format-changed                  "email" → "idn-email"</text>
+  <text x="24" y="264" fill="#c9d1d9" xml:space="preserve">  <tspan fill="#d29922">? /plan</tspan>           default-changed                 default "pro" added</text>
+
+  <text x="24" y="294" fill="#c9d1d9" xml:space="preserve">ADDITIVE (4)</text>
+  <text x="24" y="314" fill="#c9d1d9" xml:space="preserve">  <tspan fill="#28c840">+ /nickname</tspan>       property-added                  optional, object was closed</text>
+  <text x="24" y="334" fill="#c9d1d9" xml:space="preserve">  <tspan fill="#28c840">+ /plan</tspan>           enum-values-added               enum value "team" added</text>
+  <text x="24" y="354" fill="#c9d1d9" xml:space="preserve">  <tspan fill="#28c840">+ /signup_source</tspan>  property-added                  optional, object was closed</text>
+  <text x="24" y="374" fill="#c9d1d9" xml:space="preserve">  <tspan fill="#28c840">+ /tags</tspan>           bound-relaxed                   maxItems 10 → 20</text>
+
+  <text x="24" y="404" fill="#c9d1d9" xml:space="preserve">verdict: <tspan fill="#f85149">MAJOR</tspan> — 5 breaking, 2 risky, 4 additive (mode: backward)</text>
+  <text x="24" y="424" fill="#8b949e" xml:space="preserve">exit 1 — the gate blocks the "patch release" that breaks producers</text>
+
+  <text x="24" y="456" fill="#7ee787">$ schemver bump user-v1.json user-v2.json --current 1.4.2 --check 1.5.0</text>
+  <text x="24" y="476" fill="#c9d1d9" xml:space="preserve">proposed  1.5.0 — <tspan fill="#f85149">INSUFFICIENT</tspan> (delivers a minor bump, major required)</text>
+  <text x="24" y="496" fill="#8b949e" xml:space="preserve">required bump: major   ·   next: 2.0.0</text>
+</svg>

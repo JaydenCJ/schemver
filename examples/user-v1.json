@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.test/schemas/user-created/v1.json",
+  "title": "user.created event",
+  "description": "Emitted once when a user account is created.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "email", "plan"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 320
+    },
+    "plan": {
+      "type": "string",
+      "enum": ["free", "pro", "enterprise"]
+    },
+    "age": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "maxItems": 10
+    },
+    "referrer": {
+      "type": "string",
+      "description": "Marketing attribution slug."
+    }
+  }
+}
